@@ -1,4 +1,4 @@
-class Coins extends MovableObject{
+class Coins extends StaticObjects{
 
     height = 200;
     width = 200;
@@ -13,8 +13,8 @@ class Coins extends MovableObject{
     constructor(){
         super().loadImage(this.IMAGES_COINS[0]);
         this.loadImages(this.IMAGES_COINS);
-        this.x = 200;
-        this.animate();
+        this.x = 400;
+        
     }
 
     animate() {
