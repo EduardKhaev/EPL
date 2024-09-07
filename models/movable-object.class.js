@@ -3,7 +3,7 @@ class MovableObject extends DrawableObject {
     speed = 0.15;
     otherDirection = false;
     speedY = 0;
-    acceleration = 2.5;
+    acceleration = 1.5;
     energy = 100;
     lastHit = 0;
 
@@ -26,15 +26,21 @@ class MovableObject extends DrawableObject {
     
     
 
-    
-    
 
     isColliding(mo){
+        if (mo instanceof Coins ){
+            return this.x + this.width > mo.x + 50  &&
+                this.y + 100 + this.height > mo.y &&
+                this.x < mo.x &&
+                this.y < mo.y + mo.height;
+        }
         return this.x + this.width > mo.x &&
-            this.y + this.height > mo.y &&
+            this.y + 100 + this.height - 100 > mo.y &&
             this.x < mo.x &&
             this.y < mo.y + mo.height;
     }
+
+
     hit(){
         this.energy -= 5;
         if (this.energy < 0) {

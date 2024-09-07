@@ -13,7 +13,7 @@ class Coins extends StaticObjects{
     constructor(){
         super().loadImage(this.IMAGES_COINS[0]);
         this.loadImages(this.IMAGES_COINS);
-        this.x = 400;
+        this.x = 200 + Math.random() * 2000;
         
     }
 

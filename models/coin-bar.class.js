@@ -21,23 +21,23 @@ class CoinBar extends DrawableObject {
         
     }
     setCoinCount(countCoin) {
-        this.countCoin = countCoin;
+        this.coinCount = countCoin;
         let path = this.IMAGES_COINSBAR[this.coinImageIndex()];
         this.img = this.imageCache[path];
     }
     coinImageIndex(){
-        if (this.coinCount == 100) {
-            return 5;
-        } else if (this.coinCount > 80){
-            return 4;
-        } else if (this.coinCount > 60){
-            return 3;
-        } else if (this.coinCount > 40){
-            return 2;
-        } else if (this.coinCount > 20){
-            return 1;
-        } else  {
+        if (this.coinCount == 0) {
             return 0;
+        } else if (this.coinCount == 20){
+            return 1;
+        } else if (this.coinCount == 40){
+            return 2;
+        } else if (this.coinCount == 60){
+            return 3;
+        } else if (this.coinCount == 80){
+            return 4;
+        } else  {
+            return 5;
         } 
 
     }

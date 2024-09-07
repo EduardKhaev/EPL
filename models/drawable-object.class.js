@@ -23,12 +23,36 @@ class DrawableObject {
     }
 
     drawFrame(ctx){
-        if (this instanceof Character || this instanceof Chicken || this instanceof Coins) {
+        if (this instanceof Character || this instanceof Coins || this instanceof Chicken){
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+        if (this instanceof Character ) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x, this.y + 100, this.width, this.hit_box_height);
+            ctx.stroke();
+        }
+        else if (this instanceof Coins){
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x + 50, this.y + 50, this.width -100, this.height - 100);
+            ctx.stroke();
+        }
+
+
+        else if( this instanceof Chicken ){
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';
             ctx.rect(this.x, this.y, this.width, this.height);
             ctx.stroke();
+
         }
     }
 
