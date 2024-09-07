@@ -18,15 +18,15 @@ class BottleBar extends DrawableObject {
         this.y = 0;
         this.width = 200;
         this.height = 60;
-        this.setCoinCount(0);
+        this.setBottleCount(0);
         
     }
-    setCoinCount( bottleCount) {
+    setBottleCount( bottleCount) {
         this. bottleCount =  bottleCount;
-        let path = this.IMAGES_BOTTLEBAR[this.coinImageIndex()];
+        let path = this.IMAGES_BOTTLEBAR[this.bottleImageIndex()];
         this.img = this.imageCache[path];
     }
-    coinImageIndex(){
+    bottleImageIndex(){
         if (this. bottleCount == 100) {
             return 5;
         } else if (this. bottleCount > 80){

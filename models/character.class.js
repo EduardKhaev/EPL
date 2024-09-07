@@ -1,6 +1,7 @@
 class Character extends MovableObject {
   y = 30;
   coin_count = 0;
+  bottle_count = 20;
   height = 300;
   width = 150;
   hit_box_height = 0
@@ -97,9 +98,13 @@ class Character extends MovableObject {
   jump() {
     this.speedY = 30;
   }
-  collect(){
+  collect(item){
+    if (item instanceof Coins){
     this.coin_count += 20;
-    this.lastHit = new Date().getTime();
+    }
+    else if (item instanceof Bottles){
+    this.bottle_count += 10;
+    }
 }
 
 

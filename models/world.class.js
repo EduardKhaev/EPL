@@ -49,13 +49,24 @@ class World {
     });
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)) {
-          this.character.collect(); //increase character score
+          this.character.collect(coin); //increase character score
           //console.log(this.character.coin_count); 
           this.level.coins.pop(coin); //remove coin after collecting it
           this.coinBar.setCoinCount(this.character.coin_count);
         
       }
     });
+
+    this.level.bottles.forEach((bottle) => {
+      if (this.character.isColliding(bottle)) {
+          this.character.collect(bottle); //increase character score
+          //console.log(this.character.coin_count); 
+          this.level.bottles.pop(bottle); //remove coin after collecting it
+          this.bottleBar.setBottleCount(this.character.bottle_count);
+        
+      }
+    });
+    
   }
 
   draw() {
@@ -67,6 +78,7 @@ class World {
     this.addObjectsToMap(this.level.clouds);
     this.addObjectsToMap(this.level.enemies);
     this.addObjectsToMap(this.level.coins);
+    this.addObjectsToMap(this.level.bottles);
     this.addObjectsToMap(this.throwableObjects);
 
     this.ctx.translate(-this.camera_x, 0);

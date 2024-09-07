@@ -28,12 +28,6 @@ class MovableObject extends DrawableObject {
 
 
     isColliding(mo){
-        if (mo instanceof Coins ){
-            return this.x + this.width > mo.x + 50  &&
-                this.y + 100 + this.height > mo.y &&
-                this.x < mo.x &&
-                this.y < mo.y + mo.height;
-        }
         return this.x + this.width > mo.x &&
             this.y + 100 + this.height - 100 > mo.y &&
             this.x < mo.x &&
