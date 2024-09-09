@@ -54,6 +54,14 @@ class Character extends MovableObject {
   // Sound effect for walking
   walking_sound = new Audio('audio/walking-sound.mp3');
 
+
+  offset = {
+    top: 120,
+    left: 40,
+    right: 30,
+    bottom: 30
+}
+
   // Constructor for initializing a new instance of Character
   constructor() {
     super(); // Calls the constructor of the MovableObject class

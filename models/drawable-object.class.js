@@ -35,7 +35,7 @@ class DrawableObject {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';
-            ctx.rect(this.x + 30, this.y + 130, this.width - 70, this.height - 150);  // Shrinks the rectangle for coins
+            ctx.rect(this.x + 30, this.y + 130, this.width - 70, this.height - 150);  // Shrinks the rectangle for Character
             ctx.stroke();
         }
         

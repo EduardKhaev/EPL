@@ -9,6 +9,7 @@ class World {
   statusBar = new StatusBar();  // Create a new status bar (e.g., for health display)
   coinBar = new CoinBar();  // Create a new display for collected coins
   bottleBar = new BottleBar();  // Create a new display for collected bottles
+  endbossBar = new EndbossBar();
   throwableObjects = [];  // Array for objects that the character can throw (e.g., bottles)
 
   // Constructor is called when a new instance of the class is created
@@ -90,6 +91,7 @@ class World {
     this.addToMap(this.statusBar);
     this.addToMap(this.coinBar);
     this.addToMap(this.bottleBar);
+    this.addToMap(this.endbossBar);
 
     this.ctx.translate(this.camera_x, 0);  // Move the camera back again
     this.ctx.translate(-this.camera_x, 0);  // Move the camera back
