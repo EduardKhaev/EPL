@@ -11,6 +11,12 @@ class Coins extends StaticObjects {
         'img/8_coin/coin_1.png',
         'img/8_coin/coin_2.png'
     ];
+    offset = {
+        top: 120,
+        left: 40,
+        right: 30,
+        bottom: 30
+    }
 
     // Constructor for initializing a new instance of Coins
     constructor() {

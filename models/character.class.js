@@ -6,7 +6,6 @@ class Character extends MovableObject {
   bottle_count = 20; // Initial bottle count
   height = 300; // Height of the character
   width = 150; // Width of the character
-  hit_box_height = 0; // Height of the character's hitbox
   speed = 7; // Movement speed of the character
 
   // Array of image paths for the walking animation
@@ -63,7 +62,6 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_JUMPING); // Loads all images for the jumping animation
     this.loadImages(this.IMAGES_DEAD); // Loads all images for the dead animation
     this.loadImages(this.IMAGES_HURT); // Loads all images for the hurt animation
-    this.hit_box_height = this.height - 100; // Sets the hitbox height
     this.applyGravity(); // Applies gravity to the character
     this.animate(); // Starts the animation
   }

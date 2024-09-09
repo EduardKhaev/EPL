@@ -8,6 +8,13 @@ class DrawableObject {
     height = 150;  // The height of the object
     width = 100;  // The width of the object
 
+    offset = {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+    }
+
     // Method to load a single image
     loadImage(path) {
         this.img = new Image();  // Creates a new Image object
@@ -21,21 +28,14 @@ class DrawableObject {
 
     // Method to draw a frame around the object (for collision detection or debugging)
     drawFrame(ctx) {
-        // Draws a red frame around objects of type Character, Coins, or Chicken
-        if (this instanceof Character || this instanceof Coins || this instanceof Chicken) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'red';
-            ctx.rect(this.x, this.y, this.width, this.height);  // Draws a rectangle around the object
-            ctx.stroke();
-        }
+        
         
         // Draws an additional blue frame for the character (e.g., for the hitbox)
         if (this instanceof Character) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y + 100, this.width, this.hit_box_height);  // Draws a blue frame for the hitbox
+            ctx.rect(this.x + 30, this.y + 130, this.width - 70, this.height - 150);  // Shrinks the rectangle for coins
             ctx.stroke();
         }
         
@@ -44,12 +44,20 @@ class DrawableObject {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';
-            ctx.rect(this.x + 50, this.y + 50, this.width - 100, this.height - 100);  // Shrinks the rectangle for coins
+            ctx.rect(this.x + 75, this.y + 75, this.width - 150, this.height - 150);  // Shrinks the rectangle for coins
             ctx.stroke();
         }
 
         // Draws a blue frame for chickens
         else if (this instanceof Chicken) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x, this.y, this.width, this.height,);  // Standard frame around the chicken
+            ctx.stroke();
+        }
+
+        else if (this instanceof Bottles) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';

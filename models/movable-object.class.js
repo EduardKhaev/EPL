@@ -30,13 +30,26 @@ class MovableObject extends DrawableObject {
         }
     }
 
-    // Checks if this object is colliding with another `mo` (Movable Object)
-    isColliding(mo){
-        return this.x + this.width > mo.x &&  // Check if the right side of this object touches the left side of the other
-            this.y + 100 + this.height - 100 > mo.y &&  // Check if the bottom of this object touches the top of the other
-            this.x < mo.x &&  // Check if the left side of this object touches the right side of the other
-            this.y < mo.y + mo.height;  // Check if the top of this object touches the bottom of the other
+    
+    isColliding(mo) {
+
+        // Check if the right side of the current object (adjusted by its right offset) 
+        // is greater than the left side of the other object (adjusted by its left offset).
+        return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
+            
+            // Check if the bottom of the current object (adjusted by its bottom offset) 
+            // is greater than the top of the other object (adjusted by its top offset).
+            this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
+            
+            // Check if the left side of the current object (adjusted by its left offset) 
+            // is less than the right side of the other object (adjusted by its right offset).
+            this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
+            
+            // Check if the top of the current object (adjusted by its top offset) 
+            // is less than the bottom of the other object (adjusted by its bottom offset).
+            this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
     }
+    
 
     // Reduces the energy of the object when it is hit
     hit(){
