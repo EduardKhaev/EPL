@@ -1,5 +1,5 @@
-// The Coins class extends the StaticObjects class
-class Coins extends StaticObjects {
+// The Coins class extends the MoveableObject class
+class Coins extends MovableObject {
 
     // Default properties of the coin
     height = 200; // Height of the coin
@@ -12,15 +12,15 @@ class Coins extends StaticObjects {
         'img/8_coin/coin_2.png'
     ];
     offset = {
-        top: 120,
-        left: 40,
-        right: 30,
-        bottom: 30
+        top: 70,
+        left: 70,
+        right: 70,
+        bottom: 70
     }
 
     // Constructor for initializing a new instance of Coins
     constructor() {
-        super(); // Calls the constructor of the StaticObjects class
+        super(); // Calls the constructor of the MoveableObject class
         this.loadImage(this.IMAGES_COINS[0]); // Loads the initial image for the coin
         this.loadImages(this.IMAGES_COINS); // Loads all images for the coin animation
         this.x = 200 + Math.random() * 2000; // Sets the initial x position to a random value within a range

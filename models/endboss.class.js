@@ -18,6 +18,13 @@ class Endboss extends MovableObject {
         'img/4_enemie_boss_chicken/2_alert/G12.png'
     ];
 
+    offset = {
+        top: 70,
+        left: 20,
+        right: 20,
+        bottom: 50
+    }
+
     // Constructor for initializing a new instance of Endboss
     constructor() {
         super(); // Calls the constructor of the MovableObject class

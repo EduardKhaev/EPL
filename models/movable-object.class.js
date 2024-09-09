@@ -7,6 +7,8 @@ class MovableObject extends DrawableObject {
     acceleration = 1.5;  // Acceleration (used for gravity, for example)
     energy = 100;  // Energy value of the object (hit points or similar)
     lastHit = 0;  // Timestamp of the last hit (for hit tracking)
+    coin = 20;// Default value for coins, e.g., how many coins this object represents
+    bottle = 20;// Default value for bottles, e.g., how many bottles this object represents
 
     // Method to apply gravity
     applyGravity(){

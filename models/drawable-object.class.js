@@ -28,43 +28,14 @@ class DrawableObject {
 
     // Method to draw a frame around the object (for collision detection or debugging)
     drawFrame(ctx) {
-        
-        
-        // Draws an additional blue frame for the character (e.g., for the hitbox)
-        if (this instanceof Character) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x + 30, this.y + 130, this.width - 70, this.height - 150);  // Shrinks the rectangle for Character
-            ctx.stroke();
+        if (this instanceof Character||this instanceof Bottles||this instanceof Coins||this instanceof Endboss||this instanceof Chicken||this instanceof ThrowableObject) {
+          ctx.beginPath();
+          ctx.lineWidth = "5";
+          ctx.strokeStyle = "red";
+          ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.left - this.offset.right, this.height - this.offset.top - this.offset.bottom);
+          ctx.stroke();
         }
-        
-        // Draws a special blue frame for coins
-        else if (this instanceof Coins) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x + 75, this.y + 75, this.width - 150, this.height - 150);  // Shrinks the rectangle for coins
-            ctx.stroke();
-        }
-
-        // Draws a blue frame for chickens
-        else if (this instanceof Chicken) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y, this.width, this.height,);  // Standard frame around the chicken
-            ctx.stroke();
-        }
-
-        else if (this instanceof Bottles) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y, this.width, this.height);  // Standard frame around the chicken
-            ctx.stroke();
-        }
-    }
+      }
 
     // Method to load multiple images (e.g., for animations)
     loadImages(arr) {

@@ -1,20 +1,27 @@
-// The Bottles class extends the StaticObjects class
-class Bottles extends StaticObjects {
+// The Bottles class extends the MoveableObject class
+class Bottles extends MovableObject {
 
-    // Default height and width of the bottle
+    // height and width of the bottle
     height = 100;
     width = 100;
-    // Default y position of the bottle
-    y = 320;
+    y = 320; //Y position of the bottle
+
+    offset = {
+        top: 20,
+        left: 40,
+        right: 20,
+        bottom: 10
+    }
 
     // Array of image paths for the bottle animation
     IMAGES_BOTTLES = [
-        'img/6_salsa_bottle/salsa_bottle.png'
+        'img/6_salsa_bottle/1_salsa_bottle_on_ground.png',
+        'img/6_salsa_bottle/2_salsa_bottle_on_ground.png'
     ];
 
     // Constructor for initializing a new instance of Bottles
     constructor() {
-        super(); // Calls the constructor of the StaticObjects class
+        super(); // Calls the constructor of the MoveableObject class
         this.loadImage(this.IMAGES_BOTTLES[0]); // Loads the initial image for the bottle
         this.loadImages(this.IMAGES_BOTTLES); // Loads all images for the bottle animation
         this.x = 200 + Math.random() * 2000; // Sets the x position to a random value within a range

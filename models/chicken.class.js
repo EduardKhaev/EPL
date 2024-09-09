@@ -11,6 +11,12 @@ class Chicken extends MovableObject {
     "img/3_enemies_chicken/chicken_normal/1_walk/2_w.png",
     "img/3_enemies_chicken/chicken_normal/1_walk/3_w.png"
   ];
+  offset = {
+    top: 5,
+    left: 5,
+    right: 5,
+    bottom: 5
+}
 
   // Constructor for initializing a new instance of Chicken
   constructor() {
