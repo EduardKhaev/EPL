@@ -7,6 +7,11 @@ let keyboard = new Keyboard(); // Create a new instance of Keyboard to handle ke
 function init() {
     canvas = document.getElementById('canvas'); // Get the canvas element from the HTML
     world = new World(canvas, keyboard); // Create a new World instance, passing the canvas and keyboard
+    let startScreenImage = document.querySelector('.startscreen');
+    let startGameBtn = document.querySelector('.startgamebtn');
+    startScreenImage.style.display = 'none';
+    startGameBtn.style.display = 'none';
+    
 
     // Log the character instance to the console for debugging purposes
     console.log('My character is', world.character);

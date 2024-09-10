@@ -32,7 +32,7 @@ class World {
     setInterval(() => {  
       this.checkCollisions();  // Check for collisions between objects
       this.checkThrowObjects();  // Check if the player wants to throw an object
-    }, 200);  // Execute this logic every 200 milliseconds
+      }, 100);  // Execute this logic every 200 milliseconds
   }
 
   // Check if the player wants to throw an object (bottle)
