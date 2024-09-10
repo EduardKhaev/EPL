@@ -25,6 +25,7 @@ class Bottles extends MovableObject {
         this.loadImage(this.IMAGES_BOTTLES[0]); // Loads the initial image for the bottle
         this.loadImages(this.IMAGES_BOTTLES); // Loads all images for the bottle animation
         this.x = 200 + Math.random() * 2000; // Sets the x position to a random value within a range
+        this.animate();
     }
 
     // Method to animate the bottle

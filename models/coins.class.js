@@ -24,6 +24,7 @@ class Coins extends MovableObject {
         this.loadImage(this.IMAGES_COINS[0]); // Loads the initial image for the coin
         this.loadImages(this.IMAGES_COINS); // Loads all images for the coin animation
         this.x = 200 + Math.random() * 2000; // Sets the initial x position to a random value within a range
+        this.animate();
     }
 
     // Method to handle coin animation
