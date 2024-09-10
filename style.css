@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Bulletto Killa';
+    src: url('fonts/Bulletto Killa.ttf') format('truetype');
+
+    font-family: 'zabars';
+    src: url('fonts/zabars.ttf') format('truetype');
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -21,11 +29,26 @@ canvas{
     position: absolute;
 }
 .startgamebtn{
-    position: absolute;
-    top: 300px;
-    right: 850px;
+    position: fixed;
+    top: 350px;
+    right: 880px;
     z-index: 10;
     height: 50px;
     width: 150px;
+    font-family: 'zabars';
+    font-size: 30px;
+    border-radius: 35px;
+    outline: none;
+    border-style: none;
+    background-color: #FFDF00;
+    cursor: pointer;
+}
+.startgamebtn:hover {
+    scale: 1.1;
+    transition: all 75ms;
+}
+h1{
+    font-family: 'zabars';
+    font-size: 80px;
     
 }
