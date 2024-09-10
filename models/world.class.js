@@ -1,47 +1,49 @@
 class World {
-  // Initialize properties
-  character = new Character();  // Create a new Character object
-  level = level1;  // Reference to the current level (here "level1")
-  canvas;  // Placeholder for the drawing canvas
-  ctx;  // 2D context for the canvas
-  keyboard;  // Placeholder for keyboard input
-  camera_x = 0;  // Camera position on the x-axis
-  statusBar = new StatusBar();  // Create a new status bar (e.g., for health display)
-  coinBar = new CoinBar();  // Create a new display for collected coins
-  bottleBar = new BottleBar();  // Create a new display for collected bottles
+  
+  character = new Character(); 
+  level = level1;
+  canvas;
+  ctx;
+  keyboard;
+  camera_x = 0;
+
+  statusBar = new StatusBar();
+  coinBar = new CoinBar();
+  bottleBar = new BottleBar();
   endbossBar = new EndbossBar();
-  coins = 0; // Initial coin count
-  bottles = 0; // Initial bottle count
-  throwableObjects = [];  // Array for objects that the character can throw (e.g., bottles)
+
+  coins = 0; 
+  bottles = 0;
+  throwableObjects = [];
 
   // Constructor is called when a new instance of the class is created
   constructor(canvas, keyboard) {
-    this.ctx = canvas.getContext("2d");  // Get the 2D context for drawing on the canvas
-    this.canvas = canvas;  // Assign the canvas
-    this.keyboard = keyboard;  // Assign the keyboard control
-    this.draw();  // Start the drawing process
-    this.setWorld();  // Set the link between World and Character
-    this.run();  // Start the main game loop (e.g., collision detection, logic)
+    this.ctx = canvas.getContext("2d");
+    this.canvas = canvas;
+    this.keyboard = keyboard;
+    this.draw();
+    this.setWorld();
+    this.run();
   }
 
   // Link the world with the character (allows the character to access the world)
   setWorld() {
-    this.character.world = this;  // Set a reference to the world in the character object
+    this.character.world = this;
   }
 
   // Main game loop that regularly checks logic (collisions, etc.)
   run() {
     setInterval(() => {  
-      this.checkCollisions();  // Check for collisions between objects
-      this.checkThrowObjects();  // Check if the player wants to throw an object
-      }, 100);  // Execute this logic every 200 milliseconds
+      this.checkCollisions();
+      this.checkThrowObjects();
+      }, 100);
   }
 
   // Check if the player wants to throw an object (bottle)
   checkThrowObjects() {
-    if (this.keyboard.D) {  // If the 'D' key is pressed
-      let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);  // Create a new bottle near the character
-      this.throwableObjects.push(bottle);  // Add the bottle to the array of throwable objects
+    if (this.keyboard.D) { 
+      let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+      this.throwableObjects.push(bottle);
     }
   }
 
@@ -49,45 +51,45 @@ class World {
   checkCollisions() {
     // Check collision with enemies
     this.level.enemies.forEach((enemy, coin, bottle) => {
-      if (this.character.isColliding(enemy)) {  // If the character collides with an enemy
-        this.character.hit();  // Reduce the character's energy
-        this.statusBar.setPercentage(this.character.energy);  // Update the health display in the StatusBar
+      if (this.character.isColliding(enemy)) {
+        this.character.hit(); 
+        this.statusBar.setPercentage(this.character.energy);
       }
     });
     
     // Check collision with coins
     this.level.coins.forEach((coin) => {
-      if (this.character.isColliding(coin)) {  // If the character touches a coin
-        this.character.collect(coin);  // Collect the coin (e.g., increase the coin count)
-        this.level.coins.pop(coin);  // Remove the coin from the level
-        this.coinBar.setPercentage(this.character.coins);  // Update the coin bar
+      if (this.character.isColliding(coin)) { 
+        this.character.collect(coin);  
+        this.level.coins.pop(coin);  
+        this.coinBar.setPercentage(this.character.coins); 
       }
     });
 
     // Check collision with bottles
     this.level.bottles.forEach((bottle) => {
-      if (this.character.isColliding(bottle)) {  // If the character touches a bottle
-        this.character.collect(bottle);  // Collect the bottle (e.g., increase the bottle count)
-        this.level.bottles.pop(bottle);  // Remove the bottle from the level
-        this.bottleBar.setPercentage(this.character.bottles);  // Update the bottle bar
+      if (this.character.isColliding(bottle)) { 
+        this.character.collect(bottle);  
+        this.level.bottles.pop(bottle); 
+        this.bottleBar.setPercentage(this.character.bottles);  
       }
     });
   }
 
   // Draw all objects on the canvas
   draw() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);  // Clear the canvas for a new frame
-    this.ctx.translate(this.camera_x, 0);  // Move the camera horizontally
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);  
+    this.ctx.translate(this.camera_x, 0);
 
-    this.addObjectsToMap(this.level.backgroundObjects);  // Add background objects to the canvas
-    this.addToMap(this.character);  // Add the character to the canvas
-    this.addObjectsToMap(this.level.clouds);  // Add clouds to the canvas
-    this.addObjectsToMap(this.level.enemies);  // Add enemies to the canvas
-    this.addObjectsToMap(this.level.coins);  // Add coins to the canvas
-    this.addObjectsToMap(this.level.bottles);  // Add bottles to the canvas
-    this.addObjectsToMap(this.throwableObjects);  // Add throwable objects (bottles) to the canvas
+    this.addObjectsToMap(this.level.backgroundObjects);
+    this.addToMap(this.character);  
+    this.addObjectsToMap(this.level.clouds);
+    this.addObjectsToMap(this.level.enemies); 
+    this.addObjectsToMap(this.level.coins);  
+    this.addObjectsToMap(this.level.bottles); 
+    this.addObjectsToMap(this.throwableObjects);  
 
-    this.ctx.translate(-this.camera_x, 0);  // Move the camera back
+    this.ctx.translate(-this.camera_x, 0);  
 
     // Add the status bars to the canvas (e.g., health bar, coin bar, bottle bar)
     this.addToMap(this.statusBar);
@@ -95,47 +97,47 @@ class World {
     this.addToMap(this.bottleBar);
     this.addToMap(this.endbossBar);
 
-    this.ctx.translate(this.camera_x, 0);  // Move the camera back again
-    this.ctx.translate(-this.camera_x, 0);  // Move the camera back
+    this.ctx.translate(this.camera_x, 0);  
+    this.ctx.translate(-this.camera_x, 0); 
 
     // Draw the next frame
     self = this;
     requestAnimationFrame(function () {
-      self.draw();  // Continuously call the draw method to animate the game
+      self.draw();  
     });
   }
 
   // Add a group of objects to the map
   addObjectsToMap(objects) {
     objects.forEach((o) => {
-      this.addToMap(o);  // Draw each object from the array
+      this.addToMap(o); 
     });
   }
 
   // Add a single object to the map
   addToMap(mo) {
-    if (mo.otherDirection) {  // If the object should face the opposite direction
-      this.flipImage(mo);  // Flip the image horizontally
+    if (mo.otherDirection) {  
+      this.flipImage(mo); 
     }
-    mo.draw(this.ctx);  // Draw the object
-    mo.drawFrame(this.ctx);  // Draw the object's frame (if necessary)
+    mo.draw(this.ctx); 
+    mo.drawFrame(this.ctx); 
 
-    if (mo.otherDirection) {  // If the object was flipped
-      this.flipImageBack(mo);  // Flip the image back
+    if (mo.otherDirection) {
+      this.flipImageBack(mo); 
     }
   }
 
   // Flip the image horizontally
   flipImage(mo) {
-    this.ctx.save();  // Save the current state of the context
-    this.ctx.translate(mo.width, 0);  // Move the image position
-    this.ctx.scale(-1, 1);  // Scale the image horizontally by -1 (flips it)
-    mo.x = mo.x * -1;  // Invert the x-position of the object
+    this.ctx.save(); 
+    this.ctx.translate(mo.width, 0); 
+    this.ctx.scale(-1, 1); 
+    mo.x = mo.x * -1;
   }
 
   // Reset the flipped image
   flipImageBack(mo) {
-    mo.x = mo.x * -1;  // Invert the x-position back
-    this.ctx.restore();  // Restore the context to the saved state
+    mo.x = mo.x * -1; 
+    this.ctx.restore(); 
   }
 }
