@@ -2,8 +2,6 @@
 class Character extends MovableObject {
   // Default properties of the character
   y = 30; // y position of the character
-  coin_count = 0; // Initial coin count
-  bottle_count = 20; // Initial bottle count
   height = 300; // Height of the character
   width = 150; // Width of the character
   speed = 7; // Movement speed of the character
@@ -125,9 +123,9 @@ class Character extends MovableObject {
   // Method to handle collecting items
   collect(item) {
     if (item instanceof Coins) {
-      this.coin_count += 20; // Increases the coin count by 20 if a coin is collected
+      this.coins += 20; // Increases the coin count by 20 if a coin is collected
     } else if (item instanceof Bottles) {
-      this.bottle_count += 10; // Increases the bottle count by 10 if a bottle is collected
+      this.bottles += 10; // Increases the bottle count by 10 if a bottle is collected
     }
   }
 }

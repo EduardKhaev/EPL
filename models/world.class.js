@@ -10,6 +10,8 @@ class World {
   coinBar = new CoinBar();  // Create a new display for collected coins
   bottleBar = new BottleBar();  // Create a new display for collected bottles
   endbossBar = new EndbossBar();
+  coins = 0; // Initial coin count
+  bottles = 0; // Initial bottle count
   throwableObjects = [];  // Array for objects that the character can throw (e.g., bottles)
 
   // Constructor is called when a new instance of the class is created
@@ -46,10 +48,10 @@ class World {
   // Check collisions between the character and enemies, coins, and bottles
   checkCollisions() {
     // Check collision with enemies
-    this.level.enemies.forEach((enemy) => {
+    this.level.enemies.forEach((enemy, coin, bottle) => {
       if (this.character.isColliding(enemy)) {  // If the character collides with an enemy
         this.character.hit();  // Reduce the character's energy
-        this.statusBar.setHealthPercentage(this.character.energy);  // Update the health display in the StatusBar
+        this.statusBar.setPercentage(this.character.energy);  // Update the health display in the StatusBar
       }
     });
     
@@ -58,7 +60,7 @@ class World {
       if (this.character.isColliding(coin)) {  // If the character touches a coin
         this.character.collect(coin);  // Collect the coin (e.g., increase the coin count)
         this.level.coins.pop(coin);  // Remove the coin from the level
-        this.coinBar.setCoinCount(this.character.coin_count);  // Update the coin bar
+        this.coinBar.setPercentage(this.character.coins);  // Update the coin bar
       }
     });
 
@@ -67,7 +69,7 @@ class World {
       if (this.character.isColliding(bottle)) {  // If the character touches a bottle
         this.character.collect(bottle);  // Collect the bottle (e.g., increase the bottle count)
         this.level.bottles.pop(bottle);  // Remove the bottle from the level
-        this.bottleBar.setBottleCount(this.character.bottle_count);  // Update the bottle bar
+        this.bottleBar.setPercentage(this.character.bottles);  // Update the bottle bar
       }
     });
   }
