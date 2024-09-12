@@ -21,6 +21,8 @@ class CoinBar extends DrawableObject {
         this.height = 60;
         this.setPercentage(0);
     }
+    
+    
 
     // Method to set the number of coins
     setPercentage(percentage) {

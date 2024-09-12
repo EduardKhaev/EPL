@@ -1,6 +1,7 @@
 class World {
   
   character = new Character(); 
+  endboss = new Endboss();
   level = level1;
   canvas;
   ctx;
@@ -56,6 +57,13 @@ class World {
         this.statusBar.setPercentage(this.character.energy);
       }
     });
+
+    this.level.endboss.forEach((enemy) => {
+      if (this.character.isColliding(enemy)) {
+        this.character.hit(); 
+        this.statusBar.setPercentage(this.character.energy);
+      }
+    });
     
     // Check collision with coins
     this.level.coins.forEach((coin) => {
@@ -75,6 +83,13 @@ class World {
       }
     });
 
+    this.level.bottles.forEach((enemy) => {
+      if (this.endboss.isColliding(enemy)) {
+        this.endboss.hit(); 
+        this.endbossBar.setPercentage(this.endboss.energy);
+      }
+    });
+
     
 
 
@@ -89,6 +104,7 @@ class World {
     this.addToMap(this.character);  
     this.addObjectsToMap(this.level.clouds);
     this.addObjectsToMap(this.level.enemies); 
+    this.addObjectsToMap(this.level.endboss);
     this.addObjectsToMap(this.level.coins);  
     this.addObjectsToMap(this.level.bottles); 
     this.addObjectsToMap(this.throwableObjects);  

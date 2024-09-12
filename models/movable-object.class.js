@@ -5,11 +5,10 @@ class MovableObject extends DrawableObject {
     otherDirection = false; 
     speedY = 0;  
     acceleration = 1.5; 
-    energy = 100;
     lastHit = 0; 
     coin = 20;
     bottle = 20;
-
+    energy = 100;
     // Method to apply gravity
     applyGravity(){
        

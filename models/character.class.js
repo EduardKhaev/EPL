@@ -5,6 +5,7 @@ class Character extends MovableObject {
   height = 300; // Height of the character
   width = 150; // Width of the character
   speed = 7; // Movement speed of the character
+  
 
   // Array of image paths for the walking animation
   IMAGES_WALKING = [
@@ -125,7 +126,7 @@ class Character extends MovableObject {
     if (item instanceof Coins) {
       this.coins += 20; // Increases the coin count by 20 if a coin is collected
     } else if (item instanceof Bottles) {
-      this.bottles += 10; // Increases the bottle count by 10 if a bottle is collected
+      this.bottles += 20; // Increases the bottle count by 10 if a bottle is collected
     }
   }
 }

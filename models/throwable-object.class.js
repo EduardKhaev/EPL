@@ -1,4 +1,3 @@
-// The ThrowableObject class extends the MovableObject class
 class ThrowableObject extends MovableObject {
 
     IMAGES_SALSATHROW = [
@@ -32,7 +31,8 @@ class ThrowableObject extends MovableObject {
     throw() {
         this.speedY = 25; // Sets the vertical speed to simulate the throw
         this.applyGravity(); // Applies gravity to the object
-        // Sets up an interval for moving the object horizontally
+        
+
         setInterval(() => {
             this.x += 10; // Moves the object to the right by 10 pixels every interval
         }, 25); // Interval in milliseconds

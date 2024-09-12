@@ -2,6 +2,7 @@
 class Level {
     // Arrays to hold different types of objects in the level
     enemies; // Array of enemy objects in the level
+    endboss;
     coins; // Array of coin objects in the level
     bottles; // Array of bottle objects in the level
     clouds; // Array of cloud objects in the level
@@ -11,9 +12,10 @@ class Level {
     level_end_x = 2200;
 
     // Constructor for initializing a new instance of Level
-    constructor(enemies, coins, bottles, clouds, backgroundObjects) {
+    constructor(enemies, endboss, coins, bottles, clouds, backgroundObjects) {
         // Initializes the level's arrays with the provided arguments
         this.enemies = enemies; // Set enemies array
+        this.endboss = endboss;
         this.coins = coins; // Set coins array
         this.bottles = bottles; // Set bottles array
         this.clouds = clouds; // Set clouds array
