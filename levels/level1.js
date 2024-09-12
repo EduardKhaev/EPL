@@ -5,10 +5,10 @@ const level1 = new Level(
         new Chicken(), // Creates a new Chicken object
         new Chicken(), // Creates another Chicken object
         new Chicken(), // Creates a third Chicken object
-        new SmallChicken,
-        new SmallChicken,
-        new SmallChicken,
-        new SmallChicken,
+        new SmallChicken(),
+        new SmallChicken(),
+        new SmallChicken(),
+        new SmallChicken(),
         new Endboss(), // Creates an Endboss object
     ],
     [

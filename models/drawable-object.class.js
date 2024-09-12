@@ -46,16 +46,3 @@ class DrawableObject {
         });
     }
 }
-
-/* Explanation of Methods:
-loadImage(path): This method loads a single image based on a file path and assigns it to the img property,
-which is later used for drawing.
-
-draw(ctx): This method draws the loaded image (img) on the canvas (ctx) at the position (x, y) and with the dimensions width and height.
-
-drawFrame(ctx): This method draws a colored frame around the object depending on its type (e.g., Character, Coin, or Chicken)
-to make it visible. This is useful for debugging collisions or hit zones.
-
-loadImages(arr): This method loads multiple images (e.g., for animations). It stores each
-loaded image in imageCache, an object that keeps the images with their paths as keys.
-*/

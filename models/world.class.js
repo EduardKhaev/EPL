@@ -50,7 +50,7 @@ class World {
   // Check collisions between the character and enemies, coins, and bottles
   checkCollisions() {
     // Check collision with enemies
-    this.level.enemies.forEach((enemy, coin, bottle) => {
+    this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy)) {
         this.character.hit(); 
         this.statusBar.setPercentage(this.character.energy);
@@ -61,7 +61,7 @@ class World {
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)) { 
         this.character.collect(coin);  
-        this.level.coins.pop(coin);  
+        this.level.coins = this.level.coins.filter(c => c !== coin);  
         this.coinBar.setPercentage(this.character.coins); 
       }
     });
@@ -70,10 +70,14 @@ class World {
     this.level.bottles.forEach((bottle) => {
       if (this.character.isColliding(bottle)) { 
         this.character.collect(bottle);  
-        this.level.bottles.pop(bottle); 
+        this.level.bottles = this.level.bottles.filter(c => c !== bottle);
         this.bottleBar.setPercentage(this.character.bottles);  
       }
     });
+
+    
+
+
   }
 
   // Draw all objects on the canvas

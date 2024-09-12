@@ -111,7 +111,7 @@ class Character extends MovableObject {
       // Plays the walking animation if the character is moving
       } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         this.playAnimation(this.IMAGES_WALKING);
-      }
+      } 
     }, 70); // Runs every 70 milliseconds
   }
 
